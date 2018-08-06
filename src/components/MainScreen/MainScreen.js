@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 
 import Question from './Question';
 import Answer from './Answer';
+import YesNo from './YesNo';
+import Score from './Score';
+import Timer from './Timer';
 
 class MainScreen extends Component {
 
   state = {
+    time: 1,
     numberOne: undefined,
     numberTwo: undefined,
     sign: undefined,
     realAnswer: undefined,
-    answer: undefined
+    answer: undefined,
+    score: 0
   }
 
   componentDidMount() {
@@ -23,7 +28,6 @@ class MainScreen extends Component {
     let realAnswer = operators[selectedOperator].method(numberOne, numberTwo)
 
     let answer = Math.floor(Math.random() * 20);
-
 
     console.log("Real Answer: " + realAnswer);
 
@@ -39,14 +43,14 @@ class MainScreen extends Component {
   render() {
     return (
       <div>
-        <p>Timer Bar</p>
+        <Timer time={this.state.time}/>
         <Question
           numberOne={this.state.numberOne}
           numberTwo={this.state.numberTwo}
           sign={this.state.sign}/>
         <Answer answer={this.state.answer}/>
-        <p>No</p><p>Yes</p>
-        <p>Score: 0</p>
+        <YesNo/>
+        <Score score={this.state.score}/>
       </div>
     );
   }
