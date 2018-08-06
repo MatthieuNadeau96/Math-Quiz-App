@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import MainScreen from './components/MainScreen/MainScreen';
+
 class App extends Component {
   render() {
     return (
-      <div>
-
+      <div className="displayCard">
+        <MainScreen/>
       </div>
     );
   }
