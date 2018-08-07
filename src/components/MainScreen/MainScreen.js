@@ -6,6 +6,8 @@ import YesNo from './YesNo';
 import Score from './Score';
 import Timer from './Timer';
 
+var progress;
+
 class MainScreen extends Component {
 
   state = {
@@ -20,6 +22,8 @@ class MainScreen extends Component {
 
   componentDidMount() {
     this.setQuestion();
+    this.timerCountDown();
+    // this.timerCountDown().startTimer();
   }
 
   setQuestion = () => {
@@ -46,6 +50,8 @@ class MainScreen extends Component {
     })
   }
 
+
+
   checkIfRight = () => {
     const {realAnswer, answer, score} = this.state;
 
@@ -57,6 +63,8 @@ class MainScreen extends Component {
         score: newScore
       })
       this.setQuestion();
+      clearInterval(progress)
+      this.timerCountDown();
     } else {
       window.location.reload();
     }
@@ -75,6 +83,24 @@ class MainScreen extends Component {
         score: newScore
       })
       this.setQuestion();
+      clearInterval(progress)
+      this.timerCountDown();
+    }
+  }
+
+  timerCountDown = () => {
+    let elem = document.getElementById('timerProgress');
+    let width = 0;
+
+    progress = setInterval(move, 40);
+
+    function move() {
+      if (width >= 100) {
+        clearInterval(progress);
+      } else {
+        width++;
+        elem.style.width = width + '%';
+      }
     }
   }
 
