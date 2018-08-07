@@ -19,6 +19,10 @@ class MainScreen extends Component {
   }
 
   componentDidMount() {
+    this.setQuestion();
+  }
+
+  setQuestion = () => {
     let numberOne = Math.floor(Math.random() * 10);
     let numberTwo = Math.floor(Math.random() * 10);
     let operators = [{ sign: "+", method: function(n1, n2){ return n1 + n2; } }, { sign: "-", method: function(n1, n2) { return n1 - n2; } }];
@@ -53,6 +57,7 @@ class MainScreen extends Component {
       this.setState({
         score: newScore
       })
+      this.setQuestion();
       // TODO: need to refresh the question and answer but NOT the score
     } else {
       alert("wrong!");
@@ -74,6 +79,7 @@ class MainScreen extends Component {
       this.setState({
         score: newScore
       })
+      this.setQuestion();
       // TODO: need to refresh the question and answer but NOT the score
     }
   }
