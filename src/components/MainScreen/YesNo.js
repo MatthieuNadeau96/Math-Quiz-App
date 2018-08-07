@@ -4,9 +4,9 @@ class YesNo extends Component {
 
   render() {
     return (
-      <div>
-        <button>No</button>
-        <button>Yes</button>
+      <div className="buttons">
+        <button onClick={() => this.props.checkIfWrong()} className="no">No</button>
+        <button onClick={() => this.props.checkIfRight()} className="yes">Yes</button>
       </div>
     );
   }

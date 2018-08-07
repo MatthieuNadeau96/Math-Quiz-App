@@ -19,15 +19,17 @@ class MainScreen extends Component {
   }
 
   componentDidMount() {
-    let numberOne = Math.floor(Math.random() * 20);
-    let numberTwo = Math.floor(Math.random() * 20);
+    let numberOne = Math.floor(Math.random() * 10);
+    let numberTwo = Math.floor(Math.random() * 10);
     let operators = [{ sign: "+", method: function(n1, n2){ return n1 + n2; } }, { sign: "-", method: function(n1, n2) { return n1 - n2; } }];
     let selectedOperator = Math.floor(Math.random() * operators.length);
 
     let sign = (operators[selectedOperator].sign);
     let realAnswer = operators[selectedOperator].method(numberOne, numberTwo)
 
-    let answer = Math.floor(Math.random() * 20);
+    let minRange = realAnswer - 3;
+    let maxRange = realAnswer + 3;
+    let answer = Math.floor(Math.random() * (maxRange - minRange) + minRange);
 
     console.log("Real Answer: " + realAnswer);
 
@@ -40,6 +42,30 @@ class MainScreen extends Component {
     })
   }
 
+  checkIfRight = () => {
+    const {realAnswer, answer} = this.state;
+
+    if (answer === realAnswer) {
+      alert("right!");
+      window.location.reload();
+    } else {
+      alert("wrong!");
+      window.location.reload();
+    }
+  }
+
+  checkIfWrong = () => {
+    const {realAnswer, answer} = this.state;
+
+    if (answer === realAnswer) {
+      alert("wrong!");
+      window.location.reload();
+    } else {
+      alert("right!");
+      window.location.reload();
+    }
+  }
+
   render() {
     return (
       <div>
@@ -47,9 +73,13 @@ class MainScreen extends Component {
         <Question
           numberOne={this.state.numberOne}
           numberTwo={this.state.numberTwo}
-          sign={this.state.sign}/>
+          sign={this.state.sign}
+          />
         <Answer answer={this.state.answer}/>
-        <YesNo/>
+        <YesNo
+          checkIfRight={this.checkIfRight}
+          checkIfWrong={this.checkIfWrong}
+          />
         <Score score={this.state.score}/>
       </div>
     );

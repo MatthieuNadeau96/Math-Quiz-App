@@ -4,7 +4,7 @@ class Score extends Component {
 
   render() {
     return (
-      <div>
+      <div className="score">
         <p>Score: {this.props.score}</p>
       </div>
     );
