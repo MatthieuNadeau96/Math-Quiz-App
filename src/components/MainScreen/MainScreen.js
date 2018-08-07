@@ -43,11 +43,17 @@ class MainScreen extends Component {
   }
 
   checkIfRight = () => {
-    const {realAnswer, answer} = this.state;
+    const {realAnswer, answer, score} = this.state;
+
+    let newScore = score;
 
     if (answer === realAnswer) {
       alert("right!");
-      window.location.reload();
+      newScore++;
+      this.setState({
+        score: newScore
+      })
+      // TODO: need to refresh the question and answer but NOT the score
     } else {
       alert("wrong!");
       window.location.reload();
@@ -55,14 +61,20 @@ class MainScreen extends Component {
   }
 
   checkIfWrong = () => {
-    const {realAnswer, answer} = this.state;
+    const {realAnswer, answer, score} = this.state;
+
+    let newScore = score;
 
     if (answer === realAnswer) {
       alert("wrong!");
       window.location.reload();
     } else {
       alert("right!");
-      window.location.reload();
+      newScore++;
+      this.setState({
+        score: newScore
+      })
+      // TODO: need to refresh the question and answer but NOT the score
     }
   }
 
