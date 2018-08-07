@@ -52,15 +52,12 @@ class MainScreen extends Component {
     let newScore = score;
 
     if (answer === realAnswer) {
-      alert("right!");
       newScore++;
       this.setState({
         score: newScore
       })
       this.setQuestion();
-      // TODO: need to refresh the question and answer but NOT the score
     } else {
-      alert("wrong!");
       window.location.reload();
     }
   }
@@ -71,16 +68,13 @@ class MainScreen extends Component {
     let newScore = score;
 
     if (answer === realAnswer) {
-      alert("wrong!");
       window.location.reload();
     } else {
-      alert("right!");
       newScore++;
       this.setState({
         score: newScore
       })
       this.setQuestion();
-      // TODO: need to refresh the question and answer but NOT the score
     }
   }
 
