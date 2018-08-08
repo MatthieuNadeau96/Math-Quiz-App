@@ -1,19 +1,15 @@
 .displayCard {
-  background: lightgrey;
+  background: #f9fbff;
   width: 50%;
   margin: 40px auto;
   text-align: center;
   padding: 20px;
-}
-
-
-.question {
-
+  box-shadow: 6px 10px 40px -10px #888;
 }
 
 .question p {
-  color: #333;
-  font-size: 2.5em;
+  color: #444;
+  font-size: 2.9em;
   padding: 5px;
   letter-spacing: 4px;
 }
@@ -36,11 +32,13 @@
 .no {
   margin-right: 5px;
   background-color: #bc6358;
+  box-shadow: 1px 4px 8px -4px #666;
 }
 
 .yes {
   margin-left: 5px;
   background-color: #639b65;
+  box-shadow: 1px 4px 8px -4px #666;
 }
 
 .score {
@@ -49,15 +47,56 @@
 
 .score p {
   font-size: 2em;
-  color: #333;
+  color: #444;
+}
+
+.score span {
+  font-weight: 700;
+  color: #000;
 }
 
 .timerBar {
   width: 100%;
-  background-color: grey;
+  background-color: lightgrey;
 }
 .timerProgress {
   width: 1%;
   height: 30px;
-  background-color: #fc8e3a;
+  background-color: #86b27e;
+}
+
+.finalScore {
+  padding: 20px;
+  color: #444;
+  font-size: 2em;
+}
+
+.finalScore span {
+  font-weight: 700;
+  color: #000;
+}
+
+.playAgain {
+  padding: 20px;
+}
+
+.playAgain button {
+  font-size: 1em;
+  border: none;
+  background-color: #4286f4;
+  color: white;
+  padding: 5px 20px;
+  width: 180px;
+  height: 40px;
+  text-transform: uppercase;
+  box-shadow: 1px 4px 8px -4px #666;
+}
+
+@media (max-width: 1000px) {
+  .displayCard {
+    margin: 0;
+    padding-top: 30px;
+    width: 90%;
+    height: 100%;
+  }
 }
